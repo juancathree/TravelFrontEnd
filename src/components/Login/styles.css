@@ -1,0 +1,95 @@
+.container {
+  display: grid;
+  grid-template-rows: 100vh;
+  grid-template-columns: 100vw;
+}
+
+.form {
+  justify-self: center;
+  align-self: center;
+}
+
+.signin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  align-self: center;
+  font-size: 2.5rem;
+}
+
+.input-field {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+  height: 2.5rem;
+  background-color: #f0f0f0;
+  margin: 0.5rem 0;
+  border-radius: 50px;
+}
+
+.icon {
+  width: 1.1rem;
+  background-color: transparent;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  line-height: 55px;
+  color: var(--third-color);
+}
+
+.input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.forgot {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0.2rem;
+  align-self: flex-end;
+}
+
+.btn {
+  align-self: center;
+  width: 60%;
+  background-color: var(--third-color);
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 50px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.signup h4 {
+  font-weight: 100;
+}
+
+.signup h4 a {
+  color: #333;
+  font-weight: bold;
+}
