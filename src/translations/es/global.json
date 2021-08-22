@@ -1,0 +1,21 @@
+{
+  "login": {
+    "title": "JAWT",
+    "name": "Nombre",
+    "email": "Email",
+    "password": "Contraseña",
+    "forgot": "¿Has olvidado la contraseña?",
+    "login": "Entrar",
+    "unregister": "¿No tienes cuenta?",
+    "register": "Registrate"
+  },
+  "signup": {
+    "title": "JAWT",
+    "name": "Nombre",
+    "email": "Email",
+    "password": "Contraseña",
+    "registered": "¿Ya tienes cuenta?",
+    "signup": "Registrarse",
+    "login": "Entrar"
+  }
+}
