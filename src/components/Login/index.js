@@ -1,41 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
-import { Link, useHistory } from "react-router-dom";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useTranslation } from "react-i18next";
 import "./styles.css";
 
 export default function Login() {
+  const [t] = useTranslation("global");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, isLogged, isLoginLoading, hasLoginError } = useAuth();
   const history = useHistory();
 
+  useEffect(() => {
+    if (isLogged) history.push("/");
+  }, [isLogged, history]);
+
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    history.push("/signup");
+    e.preventDefault();
+    login({ email, password });
   };
 
   return (
     <div className="container">
-      <div className="form">
-        <form onSubmit={handleSubmit} className="signin">
-          <h2 className="title">JATW</h2>
-          <div className="input-field">
-            <FontAwesomeIcon className="icon" icon={faUser} />
-            <input className="input" type="text" placeholder="Usuario" />
+      {isLoginLoading && <strong>Checking credentials</strong>}
+      {!isLoginLoading && (
+        <div className="form">
+          <form className="signin" onSubmit={handleSubmit}>
+            <h2 className="title">{t("login.title")}</h2>
+            <div className="input-field">
+              <FontAwesomeIcon className="icon" icon={faEnvelope} />
+              <input
+                className="input"
+                type="email"
+                placeholder={t("login.email")}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="input-field">
+              <FontAwesomeIcon className="icon" icon={faLock} />
+              <input
+                className="input"
+                type="password"
+                placeholder={t("login.password")}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Link className="forgot" to="/forgot">
+              {t("login.forgot")}
+            </Link>
+            <button className="btn">{t("login.login")}</button>
+          </form>
+          <div className="signup">
+            <h4>
+              {t("login.unregister")}{" "}
+              <Link to="/signup">{t("login.register")}</Link>
+            </h4>
           </div>
-          <div className="input-field">
-            <FontAwesomeIcon className="icon" icon={faLock} />
-            <input className="input" type="password" placeholder="Contraseña" />
-          </div>
-          <Link className="forgot" to="/forgot">
-            ¿Has olvidado la contraseña?
-          </Link>
-          <button className="btn">Login</button>
-        </form>
-        <div className="signup">
-          <h4>
-            ¿No tienes cuenta? <Link to="/signup">Registrate</Link>
-          </h4>
         </div>
-      </div>
+      )}
+      {hasLoginError && <strong>credentials are invalid</strong>}
     </div>
   );
 }
