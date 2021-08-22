@@ -5,3 +5,7 @@
   --third-color: #4bd5f9;
   --fourth-color: #f95ed3;
 }
+
+* {
+  font-family: "Roboto Slab", serif;
+}
