@@ -54,6 +54,8 @@
   "devDependencies": {
     "i18next": "^20.4.0",
     "i18next-browser-languagedetector": "^6.1.2",
-    "react-i18next": "^11.11.4"
+    "react-i18next": "^11.11.4",
+    "react-notifications": "^1.7.2",
+    "universal-cookie": "^4.0.4"
   }
 }
