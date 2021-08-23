@@ -6,7 +6,9 @@
     "forgot": "Have you forgotten the password?",
     "login": "Login",
     "unregister": "You do not have an account?",
-    "register": "Sign up"
+    "register": "Sign up",
+    "msgError": "We couldn't find a user with the given email or password",
+    "titleError": "Bad Credentials"
   },
   "signup": {
     "title": "JAWT",
