@@ -1,0 +1,20 @@
+.menu {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem;
+  border-top: 1px solid #f1f1fd;
+  display: grid;
+  grid-template-rows: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.menu-item {
+  justify-self: center;
+}
+
+.menu-item-icon {
+  color: var(--third-color);
+}

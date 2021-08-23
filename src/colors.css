@@ -1,0 +1,11 @@
+:root {
+  --background: #fff;
+  --main-color: #6a5ef0;
+  --second-color: #4a55ff;
+  --third-color: #4bd5f9;
+  --fourth-color: #f95ed3;
+}
+
+* {
+  font-family: "Roboto Slab", serif;
+}
