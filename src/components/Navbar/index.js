@@ -1,32 +1,33 @@
-import React from "react";
+import React, { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faGlobeAmericas,
   faPlaneDeparture,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
-export default function Menu() {
+export default memo(function Navbar() {
   return (
     <nav className="menu">
-      <a className="menu-item" href="/">
+      <Link className="menu-item" to="/">
         <FontAwesomeIcon
           className="menu-item-icon"
           icon={faGlobeAmericas}
           size="2x"
         />
-      </a>
-      <a className="menu-item" href="/">
+      </Link>
+      <Link className="menu-item" to="/travels">
         <FontAwesomeIcon
           className="menu-item-icon"
           icon={faPlaneDeparture}
           size="2x"
         />
-      </a>
-      <a className="menu-item" href="/">
+      </Link>
+      <Link className="menu-item" to="/user">
         <FontAwesomeIcon className="menu-item-icon" icon={faUser} size="2x" />
-      </a>
+      </Link>
     </nav>
   );
-}
+});
