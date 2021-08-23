@@ -7,6 +7,7 @@ import { I18nextProvider } from "react-i18next";
 import detector from "i18next-browser-languagedetector";
 import "./normalize.css";
 import "./colors.css";
+import "react-notifications/lib/notifications.css";
 import global_es from "./translations/es/global.json";
 import global_en from "./translations/en/global.json";
 
