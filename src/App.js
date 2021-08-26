@@ -1,11 +1,10 @@
-import { memo } from "react";
-import AppRouter from "./routers/AppRouter";
-import AuthContext from "./context/AuthContext";
+import AppRouter from 'routers/AppRouter';
+import AuthProvider from 'context/AuthContext';
 
-export default memo(function App() {
-  return (
-    <AuthContext>
-      <AppRouter />
-    </AuthContext>
-  );
-});
+export default function App() {
+   return (
+      <AuthProvider>
+         <AppRouter />
+      </AuthProvider>
+   );
+}
