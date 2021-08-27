@@ -1,20 +1,30 @@
 .menu {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 0.5rem;
-  border-top: 1px solid #f1f1fd;
-  display: grid;
-  grid-template-rows: 2rem;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.3rem;
-  align-items: center;
+   background: var(--background);
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   padding: 0.5rem;
+   border-top: 1px solid #f1f1fd;
+   display: grid;
+   grid-template-rows: 5vh;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 0.3rem;
+   align-items: center;
+   z-index: 999999999;
 }
 
 .menu-item {
-  justify-self: center;
+   justify-self: center;
 }
 
-.menu-item-icon {
-  color: var(--third-color);
+.active {
+   color: var(--third-color) !important;
+}
+
+.inactive {
+   color: #c5c5c5;
+}
+
+a:visited {
+   color: #c5c5c5;
 }
