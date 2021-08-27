@@ -1,3 +1,3 @@
 export default function Travels() {
-  return <h1>Travels</h1>;
+   return <h1>Travels</h1>
 }
