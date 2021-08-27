@@ -1,13 +1,15 @@
-import { useState, createContext } from "react";
-import Cookies from "universal-cookie";
+import { useState, createContext, memo } from 'react';
+import Cookies from 'universal-cookie';
 
-export const Context = createContext();
+export const AuthContext = createContext();
 
-export default function AuthContext({ children }) {
-  const cookie = new Cookies();
-  const [jwt, setJWT] = useState(() => cookie.get("travelapp"));
+export default memo(function AuthProvider({ children }) {
+   const cookie = new Cookies();
+   const [jwt, setJWT] = useState(() => cookie.get('travelapp'));
 
-  return (
-    <Context.Provider value={{ jwt, setJWT }}>{children}</Context.Provider>
-  );
-}
+   return (
+      <AuthContext.Provider value={{ jwt, setJWT }}>
+         {children}
+      </AuthContext.Provider>
+   );
+});
