@@ -2,6 +2,10 @@
    display: grid;
 }
 
+.map__container {
+   height: 40vh;
+}
+
 .city__places {
    display: grid;
    margin: 2rem;

@@ -27,10 +27,11 @@ export default function City() {
             center={[51.505, -0.09]}
             zoom={13}
             scrollWheelZoom={false}
+            className="map__container"
          >
             <TileLayer
-               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+               url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png"
             />
             <Marker position={[51.505, -0.09]}>
                <Popup>
