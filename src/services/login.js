@@ -13,7 +13,7 @@ export default function login({ email, password }) {
          return res.json();
       })
       .then((res) => {
-         const { jwt } = res;
-         return jwt;
+         const { travelapp } = res;
+         return travelapp;
       });
 }
