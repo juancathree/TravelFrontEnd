@@ -1,30 +1,38 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FormInput from 'components/FormInput';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
-import { useTranslation } from 'react-i18next';
 import {
    NotificationContainer,
    NotificationManager,
 } from 'react-notifications';
-import './styles.css';
+import './styles.scss';
 
 export default function Login() {
-   const [t] = useTranslation('global');
    const [email, setEmail] = useState(
       window.localStorage.getItem('email') || ''
    );
    const [password, setPassword] = useState('');
-   const passwordRef = useRef(null);
-   const emailRef = useRef(null);
+
+   const updateEmail = (em) => {
+      setEmail(em);
+   };
+
+   const updatePassword = (pa) => {
+      setPassword(pa);
+   };
+
    const { login, isLogged, hasLoginError } = useAuth();
    const history = useHistory();
 
    useEffect(() => {
       if (isLogged) {
-         window.localStorage.setItem('email', emailRef.current.value);
+         window.localStorage.setItem(
+            'email',
+            document.getElementById('email').value
+         );
          history.push('/');
       }
    }, [isLogged, history]);
@@ -32,54 +40,52 @@ export default function Login() {
    useEffect(() => {
       if (hasLoginError) {
          NotificationManager.error(
-            t('login.msgError'),
-            t('login.titleError'),
+            'No pudimos econtrar un usuario con el email o la contraseña proporcionados',
+            'Error en las credenciales',
             5000
          );
       }
-   }, [hasLoginError, t]);
+   }, [hasLoginError]);
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      passwordRef.current.value = '';
+      document.getElementById('password').value = '';
       login({ email, password });
    };
 
    return (
-      <div className="container">
-         <div className="form">
-            <form className="signin" onSubmit={handleSubmit}>
-               <h2 className="title">{t('login.title')}</h2>
-               <div className="input-field">
-                  <FontAwesomeIcon className="icon" icon={faEnvelope} />
-                  <input
-                     ref={emailRef}
-                     className="input"
-                     type="email"
-                     placeholder={t('login.email')}
-                     onChange={(e) => setEmail(e.target.value)}
-                     value={email}
-                  />
-               </div>
-               <div className="input-field">
-                  <FontAwesomeIcon className="icon" icon={faLock} />
-                  <input
-                     ref={passwordRef}
-                     className="input"
-                     type="password"
-                     placeholder={t('login.password')}
-                     onChange={(e) => setPassword(e.target.value)}
-                  />
-               </div>
-               <Link className="forgot" to="/forgot">
-                  {t('login.forgot')}
+      <div className="login">
+         <div className="login__container">
+            <form className="login__form" onSubmit={handleSubmit}>
+               <h2 className="login__title">
+                  <span className="title__first">City</span>
+                  <span className="title__last">Walker</span>
+               </h2>
+               <FormInput
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                  update={updateEmail}
+                  value={email}
+                  icon={faEnvelope}
+               />
+               <FormInput
+                  id="password"
+                  type="password"
+                  placeholder="Contraseña"
+                  update={updatePassword}
+                  value=""
+                  icon={faLock}
+               />
+               <Link className="login__forgot" to="/forgot">
+                  ¿Has olvidado la contraseña?
                </Link>
-               <button className="btn">{t('login.login')}</button>
+               <button className="login__btn">Entrar</button>
             </form>
             <div className="signup">
                <h4>
-                  {t('login.unregister')}{' '}
-                  <Link to="/signup">{t('login.register')}</Link>
+                  ¿No tienes cuenta?
+                  <Link to="/signup"> Registrate</Link>
                </h4>
             </div>
          </div>
