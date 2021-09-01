@@ -1,0 +1,42 @@
+@import 'styles/_colors.scss';
+
+.city__container {
+   display: grid;
+}
+
+.navegation {
+   position: sticky;
+   top: 0;
+   display: grid;
+   grid-template-columns: 10% 90%;
+   background: $coral;
+   text-align: center;
+   padding: 1rem;
+
+   &__icon {
+      color: $background;
+   }
+
+   &__city {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0 !important;
+      font-family: 'Kaushan Script', cursive !important;
+      font-size: 2rem;
+      color: $background;
+   }
+}
+
+.fa-2x {
+   width: 1.2rem !important;
+}
+
+.city__places {
+   display: grid;
+   gap: 0.5rem;
+   grid-template-columns: 100%;
+   grid-auto-rows: minmax(min-content, max-content);
+   margin: 2vh 1rem 20vh 1rem;
+}

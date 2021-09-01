@@ -1,0 +1,73 @@
+@import 'styles/_colors.scss';
+
+.login {
+   display: grid;
+   grid-template-rows: 100vh;
+   grid-template-columns: 100vw;
+
+   &__container {
+      justify-self: center;
+      align-self: center;
+   }
+
+   &__form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+   }
+
+   &__title {
+      align-self: center;
+      font-size: 2.5rem;
+      margin: 3rem;
+
+      span {
+         font-family: 'Kaushan Script', cursive !important;
+      }
+
+      .title__first {
+         color: $verde;
+      }
+
+      .title__last {
+         color: $coral;
+      }
+   }
+
+   &__forgot {
+      font-size: 0.9rem;
+      color: $black;
+      margin: 0.2rem;
+      align-self: flex-end;
+   }
+
+   &__btn {
+      align-self: center;
+      width: 60%;
+      background-color: $coral;
+      border: none;
+      outline: none;
+      height: 50px;
+      border-radius: 50px;
+      color: $background;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 2rem;
+      cursor: pointer;
+   }
+}
+
+.signup {
+   display: flex;
+   justify-content: center;
+   margin-top: 2rem;
+
+   h4 {
+      font-weight: 100;
+
+      a {
+         color: $verde;
+         font-weight: bold;
+      }
+   }
+}

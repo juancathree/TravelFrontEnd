@@ -1,0 +1,43 @@
+@import 'styles/_colors.scss';
+
+.menu {
+   background: $background;
+   position: fixed;
+   bottom: 0;
+   left: 50%;
+   transform: translate(-50%);
+   margin-bottom: 0.5rem;
+   margin-right: 0.5rem;
+   width: 80%;
+   padding: 0.3rem;
+   border: 2px solid $verde;
+   border-radius: 50px;
+   display: grid;
+   justify-content: center;
+   align-content: center;
+   grid-template-rows: 4vh;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 0.3rem;
+   align-items: center;
+   z-index: 999999999;
+
+   &__item {
+      justify-self: center;
+
+      .fa-2x {
+         width: 1.3rem !important;
+      }
+   }
+
+   .active {
+      color: $verde !important;
+   }
+
+   .inactive {
+      color: $border;
+   }
+}
+
+a:visited {
+   color: $border;
+}
