@@ -5,61 +5,36 @@ import {
    faGlobeAmericas,
    faSuitcase,
 } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './styles.scss';
 
 export default memo(function Navbar() {
-   const handleClick = (icon) => {
-      switch (icon) {
-         case 'globe':
-            document.getElementById('globe').classList.add('active');
-            document.getElementById('suitcase').classList.remove('active');
-            document.getElementById('user').classList.remove('active');
-            break;
-         case 'plane':
-            document.getElementById('globe').classList.remove('active');
-            document.getElementById('suitcase').classList.add('active');
-            document.getElementById('user').classList.remove('active');
-            break;
-         case 'user':
-            document.getElementById('globe').classList.remove('active');
-            document.getElementById('suitcase').classList.remove('active');
-            document.getElementById('user').classList.add('active');
-            break;
-         default:
-            break;
-      }
-   };
-
    return (
-      <nav className="menu">
-         <Link className="menu__item" to="/">
+      <nav id="menu" className="menu">
+         <NavLink className="menu__item" to="/cities" activeClassName="active">
             <FontAwesomeIcon
                id="globe"
-               className="active"
+               className="inactive"
                icon={faGlobeAmericas}
                size="2x"
-               onClick={() => handleClick('globe')}
             />
-         </Link>
-         <Link className="menu__item" to="/travels">
+         </NavLink>
+         <NavLink className="menu__item" to="/travels" activeClassName="active">
             <FontAwesomeIcon
                id="suitcase"
                className="inactive"
                icon={faSuitcase}
                size="2x"
-               onClick={() => handleClick('plane')}
             />
-         </Link>
-         <Link className="menu__item" to="/user">
+         </NavLink>
+         <NavLink className="menu__item" to="/user" activeClassName="active">
             <FontAwesomeIcon
                id="user"
                className="inactive"
                icon={faUser}
                size="2x"
-               onClick={() => handleClick('user')}
             />
-         </Link>
+         </NavLink>
       </nav>
    );
 });
