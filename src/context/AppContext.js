@@ -1,5 +1,6 @@
 import { useState, createContext, memo, useEffect } from 'react';
 import getCities from 'services/getCities';
+import getTravels from 'services/getTravels';
 
 export const AppContext = createContext();
 
@@ -20,7 +21,14 @@ export default memo(function AppProvider({ children }) {
             setCities(JSON.parse(window.localStorage.getItem('cities')));
          });
       // load travels
-
+      getTravels()
+         .then((data) => {
+            window.localStorage.setItem('travels', JSON.stringify(data));
+            setTravels(data);
+         })
+         .catch((error) => {
+            setTravels(JSON.parse(window.localStorage.getItem('travels')));
+         });
       // load user
    }, []);
 
