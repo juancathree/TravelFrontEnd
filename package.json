@@ -7,18 +7,22 @@
       "@fortawesome/free-solid-svg-icons": "^5.15.4",
       "@fortawesome/react-fontawesome": "^0.1.15",
       "@react-leaflet/core": "^1.1.0",
+      "@syncfusion/ej2-react-calendars": "^19.2.55",
       "@testing-library/jest-dom": "^5.14.1",
       "@testing-library/react": "^11.2.7",
       "@testing-library/user-event": "^12.8.3",
-      "axios": "^0.21.1",
+      "dotenv": "^10.0.0",
       "imagekitio-react": "^1.0.10",
       "leaflet": "^1.7.1",
+      "leaflet-routing-machine": "^3.2.12",
       "node-sass": "^6.0.1",
       "react": "^17.0.2",
+      "react-datepicker": "^4.2.1",
       "react-dom": "^17.0.2",
       "react-leaflet": "^3.2.1",
       "react-router-dom": "^5.2.0",
       "react-scripts": "4.0.3",
+      "react-touch-drag-slider": "^2.1.3",
       "web-vitals": "^0.2.4",
       "workbox-background-sync": "^5.1.4",
       "workbox-broadcast-update": "^5.1.4",
@@ -53,10 +57,6 @@
    "devDependencies": {
       "@craco/craco": "^6.2.0",
       "html-critical-webpack-plugin": "^2.1.0",
-      "i18next": "^20.4.0",
-      "i18next-browser-languagedetector": "^6.1.2",
-      "react-i18next": "^11.11.4",
-      "react-notifications": "^1.7.2",
-      "universal-cookie": "^4.0.4"
+      "react-notifications": "^1.7.2"
    }
 }
