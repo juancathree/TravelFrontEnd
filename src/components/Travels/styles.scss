@@ -1,0 +1,92 @@
+@import 'styles/_colors.scss';
+@import 'styles/_index.scss';
+
+.container {
+   display: grid;
+   row-gap: 1rem;
+   margin: 1.5rem 1.5rem 4rem 1.5rem;
+   overflow-y: hidden;
+}
+
+.travels {
+   font-family: 'Kaushan Script', cursive !important;
+   font-size: 3rem;
+   text-align: center;
+   margin: 0 !important;
+   color: $coral;
+
+   &__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 15vh;
+      row-gap: 1rem;
+      margin-top: 0.5rem;
+   }
+
+   &__item {
+      position: relative;
+   }
+
+   &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(65%);
+      border-radius: 1rem;
+   }
+
+   &__info {
+      position: absolute;
+      top: 80%;
+      left: 25%;
+      transform: translate(-25%, -80%);
+   }
+
+   &__title {
+      margin: 0;
+      font-size: 3rem;
+      color: $background;
+   }
+
+   &__days {
+      margin: 0;
+      color: $background;
+      font-weight: bold;
+   }
+}
+
+.empty-travels {
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -40%);
+   color: $info;
+}
+
+.btn-add {
+   position: fixed;
+   bottom: 7rem;
+   right: 2rem;
+   display: grid;
+   grid-template-columns: 10% 90%;
+   grid-auto-rows: minmax(min-content, max-content);
+   gap: 0.2rem;
+   justify-items: center;
+   align-items: center;
+   border-radius: 50px;
+   z-index: $z-1;
+   background: $verde;
+   border: 3px solid $verde;
+   box-shadow: 0px 0px 14px -3px #000000;
+   padding: 0.5rem;
+
+   p {
+      margin: 0 !important;
+      color: $background;
+      font-weight: bold;
+   }
+
+   svg {
+      color: $background;
+   }
+}
