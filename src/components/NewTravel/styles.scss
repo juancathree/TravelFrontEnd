@@ -1,0 +1,158 @@
+@import 'styles/_colors.scss';
+@import 'styles/_index.scss';
+
+.travel__form {
+   display: grid;
+   height: 100vh;
+   grid-template-rows: 10vh;
+   grid-auto-rows: 1fr;
+   overflow: scroll;
+}
+
+.travel {
+   &__navigation {
+      position: sticky;
+      height: fit-content;
+      top: 0;
+      display: grid;
+      grid-template-columns: 10% 90%;
+      background: $coral;
+      text-align: center;
+      padding: 1rem;
+      z-index: $z-1;
+   }
+
+   &__icon {
+      color: $background;
+   }
+
+   &__title {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0 !important;
+      font-size: 1.4rem;
+      color: $background;
+   }
+}
+
+.cities {
+   &__form {
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(min-content, max-content);
+      margin: 0 1rem 1rem 2vh;
+      background: $background;
+      z-index: $z-2;
+   }
+
+   &__info {
+      font-weight: 400;
+      text-align: center;
+      margin: 0 0 1rem 0 !important;
+   }
+}
+
+.city {
+   &__form {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      grid-auto-rows: minmax(min-content, max-content);
+      border: 1px solid $border;
+      border-radius: 8px;
+      overflow: scroll;
+   }
+
+   // &__form:nth-last-child(1) {
+   //    margin-bottom: 2rem;
+   // }
+
+   &__form-clicked {
+      transition: all 2s 2s ease;
+      grid-template-columns: 1fr !important;
+
+      .city__title-container {
+         display: none !important;
+      }
+   }
+
+   &__img {
+      width: 100vw;
+      height: 10vh;
+      object-fit: cover;
+   }
+
+   &__title-container {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin: 0.3rem;
+   }
+
+   &__title {
+      margin: 0 !important;
+      align-self: center;
+      text-align: center;
+   }
+}
+
+.schedule {
+   &__form {
+      display: grid;
+      grid-auto-rows: minmax(min-content, max-content);
+      margin: 1rem;
+      justify-content: center;
+      align-content: center;
+      gap: 2rem;
+   }
+
+   &__input {
+      position: relative;
+   }
+
+   &__label {
+      margin: 0 0 0.3rem 0 !important;
+   }
+
+   &__picker {
+      border: none;
+      border-bottom: 1px solid $border;
+      min-width: 30vw;
+      background: $background;
+   }
+
+   &__info {
+      font-size: 0.7rem;
+      color: $info;
+      margin: 0.2rem 0 0 0 !important;
+   }
+
+   &__btn {
+      justify-self: center;
+      width: 60%;
+      background-color: $coral;
+      border: none;
+      outline: none;
+      height: 50px;
+      border-radius: 50px;
+      color: $background;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+   }
+}
+
+label {
+   font-weight: bold;
+}
+
+::-webkit-datetime-edit {
+   padding: 0.2rem;
+}
+
+::-webkit-datetime-edit-text {
+   padding: 0 0.2em;
+}
