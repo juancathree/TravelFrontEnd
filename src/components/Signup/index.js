@@ -1,13 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
+import { NotificationManager } from 'react-notifications';
 import FormInput from 'components/FormInput';
 import 'components/Login/styles.scss';
 
 export default function Signup() {
-   const [email, setEmail] = useState();
-   const [setPassword] = useState('');
-   const [setName] = useState('');
+   const { signup, hasError, isRegister } = useAuth();
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [name, setName] = useState('');
+   const history = useHistory();
+
+   useEffect(() => {
+      if (isRegister) {
+         NotificationManager.success('', 'Usuario creado correctamente', 5000);
+         history.push('/login');
+      }
+   }, [isRegister, history]);
+
+   useEffect(() => {
+      if (hasError) {
+         NotificationManager.error(
+            '',
+            'El usuario no pudo ser creado, intentelo mas tarde',
+            5000
+         );
+      }
+   }, [hasError]);
 
    const updateEmail = (em) => {
       setEmail(em);
@@ -23,7 +44,7 @@ export default function Signup() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      // login({ email, password });
+      signup({ name, email, password });
    };
 
    return (
@@ -47,7 +68,7 @@ export default function Signup() {
                   type="email"
                   placeholder="Email"
                   update={updateEmail}
-                  value={email}
+                  value=""
                   icon={faEnvelope}
                />
                <FormInput
