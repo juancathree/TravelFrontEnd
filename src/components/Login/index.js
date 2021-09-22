@@ -4,10 +4,7 @@ import FormInput from 'components/FormInput';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
-import {
-   NotificationContainer,
-   NotificationManager,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 import './styles.scss';
 
 export default function Login() {
@@ -24,7 +21,7 @@ export default function Login() {
       setPassword(pa);
    };
 
-   const { login, isLogged, hasLoginError } = useAuth();
+   const { login, isLogged, hasError } = useAuth();
    const history = useHistory();
 
    useEffect(() => {
@@ -38,14 +35,14 @@ export default function Login() {
    }, [isLogged, history]);
 
    useEffect(() => {
-      if (hasLoginError) {
+      if (hasError) {
          NotificationManager.error(
             'No pudimos econtrar un usuario con el email o la contraseña proporcionados',
             'Error en las credenciales',
             5000
          );
       }
-   }, [hasLoginError]);
+   }, [hasError]);
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -89,7 +86,6 @@ export default function Login() {
                </h4>
             </div>
          </div>
-         <NotificationContainer />
       </div>
    );
 }
