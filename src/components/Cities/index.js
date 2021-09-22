@@ -9,10 +9,14 @@ export default memo(function Cities() {
 
    return (
       <div className="container">
-         <h3 className="cities">Cities</h3>
+         <h3 className="cities">Ciudades</h3>
          <div className="cities__container">
             {cities.map((city) => (
-               <Link key={city} className="cities__item" to={city}>
+               <Link
+                  key={city}
+                  className="cities__item"
+                  to={'/cities/'.concat(city)}
+               >
                   <IKImage
                      path={city + '.webp'}
                      loading="lazy"
