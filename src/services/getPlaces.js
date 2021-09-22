@@ -1,7 +1,5 @@
-const ENDPOINT = 'http://localhost:8000';
-
 export default function getCities(id) {
-   return fetch(`${ENDPOINT}/place/` + id, {
+   return fetch(`${process.env.REACT_APP_API}/place/` + id, {
       method: 'GET',
       credentials: 'include',
    })
