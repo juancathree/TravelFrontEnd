@@ -29,13 +29,14 @@ export default function Travel() {
 
    const [state, setState] = useState({
       step: 0,
-      waypoints: [],
+      waypoints: tr.routes[0].map((route) => {
+         var p = JSON.parse(window.localStorage.getItem(tr['city'])).find((place) => place.name === route);
+         return [p.location.coordinates[1], p.location.coordinates[0]];}),
       travel: tr,
       city: tr['city'],
       places: JSON.parse(window.localStorage.getItem(tr['city'])),
       routes: tr['routes'],
       day: new Date(tr['startDay']),
-      // googleURL: '',
    });
 
    const history = useHistory();
@@ -61,15 +62,11 @@ export default function Travel() {
          return [p.location.coordinates[1], p.location.coordinates[0]];
       });
       var d = new Date(state.day);
-      // var origin = wp[0];
-      // var destination = wp[wp.length - 1];
-      // var inter = wp.slice(1, wp.length - 2).join('|');
       setState({
          ...state,
          step: state.step - 1,
          waypoints: wp,
          day: new Date(d).setDate(d.getDate() - 1),
-         // googleURL: `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${inter}&travelmode=walking`,
       });
    };
 
@@ -81,15 +78,11 @@ export default function Travel() {
          return [p.location.coordinates[1], p.location.coordinates[0]];
       });
       var d = new Date(state.day);
-      // var origin = wp[0];
-      // var destination = wp[wp.length - 1];
-      // var inter = wp.slice(1, wp.length - 2).join('|');
       setState({
          ...state,
          step: state.step + 1,
          waypoints: wp,
          day: new Date(d).setDate(d.getDate() + 1),
-         // googleURL: `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${inter}&travelmode=walking`,
       });
    };
 
@@ -175,7 +168,7 @@ export default function Travel() {
                      );
                   return (
                      <li key={index}>
-                        <FontAwesomeIcon icon={faCircle} size="1x" />
+                        <FontAwesomeIcon className='circle-day' icon={faCircle} size="1x" />
                      </li>
                   );
                })}
