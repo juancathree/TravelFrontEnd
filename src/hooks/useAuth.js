@@ -1,5 +1,6 @@
 import { useContext, useCallback, useState } from 'react';
 import { AuthContext } from 'context/AuthContext';
+import { useHistory } from 'react-router-dom';
 import loginService from 'services/login';
 import signupService from 'services/signup';
 
@@ -30,6 +31,12 @@ export default function useAuth() {
       [setJWT]
    );
 
+   const logout = () => {
+      console.log('hola');
+      document.cookie = 'travelapp=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+      setJWT('');
+   };
+
    const signup = useCallback(({ name, email, password }) => {
       setState({ loading: true, error: false });
       signupService({ name, email, password })
@@ -48,5 +55,6 @@ export default function useAuth() {
       isRegister: state.isRegister,
       login,
       signup,
+      logout,
    };
 }
