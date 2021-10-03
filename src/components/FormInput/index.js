@@ -11,6 +11,7 @@ export default function FormInput({
    icon,
 }) {
    const [state, setState] = useState(value);
+
    return (
       <div className="input">
          <FontAwesomeIcon className="input__icon" icon={icon} />
