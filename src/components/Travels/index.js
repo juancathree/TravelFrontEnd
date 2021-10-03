@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useApp from 'hooks/useApp';
 import { useHistory } from 'react-router-dom';
@@ -6,31 +6,46 @@ import { IKImage } from 'imagekitio-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './styles.scss';
+import getTravels from 'services/getTravels';
 
-export default memo(function Travels() {
-   const { travels } = useApp();
-   const [tr, setTravels] = useState(travels);
+export default function Travels() {
+   const { travels, setTravels, setCurrentTravel, setPlaces } = useApp();
    const history = useHistory();
-
-   useEffect(() => {
-      setTravels(travels);
-   }, [setTravels, travels]);
 
    const handleAdd = (e) => {
       e.preventDefault();
       history.push('/newtravel');
    };
 
+   useEffect(() => {
+      getTravels()
+         .then((data) => {
+            window.localStorage.setItem('travels', JSON.stringify(data));
+            setTravels(data);
+         })
+         .catch((error) => {
+            setTravels(JSON.parse(window.localStorage.getItem('travels')));
+         });
+   }, [setTravels]);
+
    return (
       <div className="container">
          <h3 className="travels">Viajes</h3>
-         {tr.maplength !== 0 && (
+         {travels.length !== 0 && (
             <div className="travels__container">
-               {tr.map((travel) => (
+               {travels.map((travel) => (
                   <Link
-                     key={travel['city']}
+                     key={travel['startDay']}
                      className="travels__item"
                      to={'/travels/'.concat(travel['_id'])}
+                     onClick={() => {
+                        setCurrentTravel(travel);
+                        setPlaces(
+                           JSON.parse(
+                              window.localStorage.getItem(travel['city'])
+                           )
+                        );
+                     }}
                   >
                      <IKImage
                         path={travel['city'] + '.webp'}
@@ -50,7 +65,7 @@ export default memo(function Travels() {
                ))}
             </div>
          )}
-         {tr.length === 0 && (
+         {travels.length === 0 && (
             <h4 className="empty-travels">No tienes ningun viaje</h4>
          )}
          <button className="btn-add" onClick={handleAdd}>
@@ -59,4 +74,4 @@ export default memo(function Travels() {
          </button>
       </div>
    );
-});
+}
