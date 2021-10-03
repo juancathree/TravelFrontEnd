@@ -20,7 +20,7 @@ export default function NewTravel() {
       endDay: '',
       itineraryStartTime: '',
       itineraryEndTime: '',
-      customEntryLocations: new Map(),
+      customEntryLocations: {},
       customVisitLocations: [],
       preferences: [],
    });
@@ -42,7 +42,7 @@ export default function NewTravel() {
    const handleChangeAdd = (input, value) => {
       if (input === 'customEntryLocations') {
          const all = state[input];
-         all.set(value, true);
+         all[value] = true;
          setState({ ...state, [input]: all });
       } else {
          const all = state[input];
@@ -54,7 +54,7 @@ export default function NewTravel() {
    const handleChangeRemove = (input, value) => {
       if (input === 'customEntryLocations') {
          const all = state[input];
-         all.delete(value);
+         delete all[value];
          setState({ ...state, [input]: all });
       } else {
          const all = state[input];
@@ -89,7 +89,7 @@ export default function NewTravel() {
             postTravel({ travel })
                .then((data) => {
                   const all = travels;
-                  all.push(data);
+                  all.push(data['travel']);
                   setTravels(all);
                   NotificationManager.success(
                      '',
