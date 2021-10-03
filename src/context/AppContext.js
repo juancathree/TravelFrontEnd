@@ -1,12 +1,13 @@
-import { useState, createContext, memo, useEffect } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import getCities from 'services/getCities';
 import getTravels from 'services/getTravels';
 
 export const AppContext = createContext();
 
-export default memo(function AppProvider({ children }) {
+export default function AppProvider({ children }) {
    const [cities, setCities] = useState([]);
    const [travels, setTravels] = useState([]);
+   const [currentTravel, setCurrentTravel] = useState();
    const [places, setPlaces] = useState([]);
    const [user, setUser] = useState({});
 
@@ -39,6 +40,8 @@ export default memo(function AppProvider({ children }) {
             setCities,
             travels,
             setTravels,
+            currentTravel,
+            setCurrentTravel,
             places,
             setPlaces,
             user,
@@ -48,4 +51,4 @@ export default memo(function AppProvider({ children }) {
          {children}
       </AppContext.Provider>
    );
-});
+}
