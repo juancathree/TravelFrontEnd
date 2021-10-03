@@ -9,7 +9,7 @@
       top: 0;
       left: 0;
       display: grid;
-      grid-template-columns: 10% 90%;
+      grid-template-columns: 10% 80% 10%;
       background: $coral;
       text-align: center;
       padding: 1rem;
@@ -17,12 +17,11 @@
    }
 
    &__id {
-      position: absolute;
-      margin: 0 !important;
       justify-self: center;
       align-self: center;
       color: $background;
       font-size: 1.5rem;
+      margin: 0 !important;
    }
 
    &__container {
@@ -41,25 +40,32 @@
 
    &__leftmap {
       position: absolute;
-      top: 31vh;
-      z-index: $z-1;
+      top: 33vh;
+      width: 2rem;
+      left: 2rem;
+      z-index: $z-2;
       padding: 0.2rem;
       background: $background;
       border: 1px solid $verde;
       border-radius: 10px;
       box-shadow: 0px 0px 14px -3px #000000;
+      display: grid;
+      justify-content: center;
    }
 
    &__rightmap {
       position: absolute;
-      top: 31vh;
-      right: 4vw;
-      z-index: $z-1;
+      top: 33vh;
+      right: 2rem;
+      width: 2rem;
+      z-index: $z-2;
       padding: 0.2rem;
       background: $background;
       border: 1px solid $verde;
       border-radius: 10px;
       box-shadow: 0px 0px 14px -3px #000000;
+      display: grid;
+      justify-content: center;
    }
 
    &__mapindex {
@@ -70,7 +76,7 @@
       display: grid;
       row-gap: 3vh;
       column-gap: 3vh;
-      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
       grid-auto-rows: minmax(min-content, max-content);
       margin: 3vh;
       justify-content: center;
@@ -105,6 +111,7 @@
 }
 
 .leaflet-container {
+   position: relative;
    justify-self: center;
    width: 85vw;
    height: 50vh;
@@ -155,6 +162,77 @@ li {
    }
 }
 
-.circle-day{
+.circle-day {
    color: $border !important;
+}
+
+.control-expand {
+   top: 50% !important;
+}
+
+.btn {
+   justify-self: center;
+   align-self: center;
+   width: 30vw;
+   margin-top: 1rem;
+   border-radius: 10px;
+   z-index: $z-1;
+   background: $verde;
+   border: 3px solid $verde;
+   box-shadow: 0px 0px 14px -3px #000000;
+   padding: 0.5rem;
+
+   p {
+      margin: 0 !important;
+      color: $background;
+      font-weight: bold;
+   }
+}
+
+.delete {
+   border: none !important;
+   background: red;
+}
+
+.cancel {
+   border: none !important;
+   background: $border !important;
+}
+
+.hide-add {
+   display: none;
+}
+
+.show-add {
+   position: fixed;
+   top: 50%;
+   transform: translate(0, -50%);
+   height: 100vh;
+   width: 100vw;
+   background-color: rgba(0, 0, 0, 0.5);
+   z-index: $z-1;
+
+   .add-form {
+      display: grid;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2rem;
+      padding-top: 3rem !important;
+      border: 1px solid $border;
+      border-radius: 10px;
+      background-color: $background;
+
+      .close {
+         position: absolute;
+         top: 1rem;
+         right: 1rem;
+      }
+
+      .text {
+         text-align: center;
+         margin: 0 0 1.5rem 0;
+      }
+   }
 }
