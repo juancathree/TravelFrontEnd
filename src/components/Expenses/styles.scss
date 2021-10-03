@@ -4,12 +4,12 @@
 .expenses {
    &__container {
       display: grid;
-      margin: 0 1rem 1rem 1rem;
-      grid-template-columns: 1fr;
-      grid-auto-rows: minmax(min-content, max-content);
-      row-gap: 1rem;
-      justify-content: center;
-      height: 90vh;
+      // margin: 0 1rem 1rem 1rem;
+      // grid-template-columns: 1fr;
+      // grid-auto-rows: minmax(min-content, max-content);
+      // row-gap: 1rem;
+      // justify-content: center;
+      // height: 90vh;
    }
 
    &__list {
@@ -42,6 +42,7 @@
          width: 60%;
          text-align: center;
          justify-self: center;
+         background: $background;
 
          h3 {
             margin: 0 !important;
@@ -60,11 +61,13 @@
 
       .list {
          display: grid;
+         grid-template-columns: 80vw;
          grid-auto-rows: minmax(min-content, max-content);
          row-gap: 1rem;
-         width: 60%;
+         width: 100%;
          justify-self: center;
-         margin-top: 1.5rem;
+         justify-content: center;
+         margin: 1.5rem 0 10vh 0;
 
          .expense {
             display: grid;
@@ -86,15 +89,17 @@
 
          .expense-grupal {
             display: grid;
-            grid-template-columns: 20% 60% 20%;
+            grid-template-columns: 25% 50% 25%;
             border: 1px solid $border;
             border-radius: 25px;
             padding: 0.5rem;
             box-shadow: 0px 0px 8px -3px #000000;
+            text-align: center;
 
             h4 {
                margin: 0 !important;
                justify-self: center;
+               align-self: center;
             }
 
             .description {
@@ -114,11 +119,10 @@
    display: grid;
    grid-template-columns: 10% 90%;
    grid-auto-rows: minmax(min-content, max-content);
-   width: 35vw;
    gap: 0.2rem;
    justify-items: center;
    align-items: center;
-   position: sticky;
+   position: fixed;
    bottom: 2rem;
    left: 60vw;
    border-radius: 50px;
@@ -144,8 +148,9 @@
 }
 
 .show-add {
-   position: absolute;
-   top: 0;
+   position: fixed;
+   top: 50%;
+   transform: translate(0, -50%);
    height: 100vh;
    width: 100vw;
    background-color: rgba(0, 0, 0, 0.5);
@@ -168,7 +173,7 @@
          right: 1rem;
       }
 
-      h2 {
+      .text {
          text-align: center;
          margin: 0 0 1.5rem 0;
       }
@@ -177,6 +182,7 @@
 
 .btn {
    justify-self: center;
+   align-self: center;
    width: 30vw;
    margin-top: 1rem;
    border-radius: 10px;
@@ -188,5 +194,17 @@
 
    p {
       margin: 0 !important;
+      color: $background;
+      font-weight: bold;
    }
+}
+
+.delete {
+   border: none !important;
+   background: red;
+}
+
+.cancel {
+   border: none !important;
+   background: $border !important;
 }
