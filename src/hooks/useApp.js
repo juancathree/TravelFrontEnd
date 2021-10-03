@@ -2,8 +2,16 @@ import { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
 
 export default function useApp() {
-   const { cities, places, setPlaces, travels, setTravels, user } =
-      useContext(AppContext);
+   const {
+      cities,
+      places,
+      setPlaces,
+      travels,
+      setTravels,
+      user,
+      currentTravel,
+      setCurrentTravel,
+   } = useContext(AppContext);
 
    return {
       cities,
@@ -11,6 +19,8 @@ export default function useApp() {
       setPlaces,
       travels,
       setTravels,
+      currentTravel,
+      setCurrentTravel,
       user,
    };
 }
