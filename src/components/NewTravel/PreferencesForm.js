@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IKImage } from 'imagekitio-react';
@@ -12,6 +13,13 @@ export default function PreferencesForm({
    const { city } = values;
    const places = JSON.parse(window.localStorage.getItem(city));
    const categories = [...new Set(places.map((x) => x.category))];
+
+   useEffect(() => {
+      const { preferences } = values;
+      preferences.forEach((cv) => {
+         document.getElementById(cv).classList.add('city__form-clicked');
+      });
+   });
 
    const handleClick = (e) => {
       e.preventDefault();
