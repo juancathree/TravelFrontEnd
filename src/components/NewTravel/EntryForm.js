@@ -32,9 +32,9 @@ export default function EntryForm({
 
    useEffect(() => {
       const { customEntryLocations } = values;
-      customEntryLocations.forEach((value, key) => {
+      for (const key in customEntryLocations) {
          document.getElementById(key).classList.add('city__form-clicked');
-      });
+      }
    });
 
    return (
