@@ -56,7 +56,7 @@ export default function VisitForm({
                .filter(
                   (place) =>
                      place.visit.outside != null &&
-                     !customEntryLocations.has(place.name)
+                     !customEntryLocations.hasOwnProperty(place.name)
                )
                .map((place) => (
                   <div
