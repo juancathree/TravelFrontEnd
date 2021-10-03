@@ -74,9 +74,6 @@ export default function Login() {
                   value=""
                   icon={faLock}
                />
-               <Link className="login__forgot" to="/forgot">
-                  ¿Has olvidado la contraseña?
-               </Link>
                <button className="login__btn">Entrar</button>
             </form>
             <div className="signup">
